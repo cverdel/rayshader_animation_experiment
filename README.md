@@ -35,7 +35,7 @@ map_array[,,3] = rgb_b/255 #Green
 map_array = aperm(map_array, c(2,1,3))
 
 #Loop
-steps=6  #Half the number of total frames in the animation
+steps=120  #Half the number of total frames in the animation
 num<-c(1:steps, steps:1) #Sequence for frames
 width=1800
 height=1200
@@ -64,6 +64,6 @@ for(i in 1:steps)
 }
 
 #Read sequence of frames and create video
-av::av_encode_video(sprintf("el_plot%i.png",num), vfilter = "scale=trunc(iw/2)*2:trunc(ih/2)*2", framerate = 2, output = "el_video.mp4")
+av::av_encode_video(sprintf("el_plot%i.png",num), vfilter = "scale=trunc(iw/2)*2:trunc(ih/2)*2", framerate = 20, output = "el_video.mp4")
 
 ```
