@@ -13,6 +13,9 @@ temp<-tempfile()
 download.file(image_url, temp, mode="wb")
 
 rgb = raster::brick(temp) #Map
+ex<-(extent(rgb)) #Extent of image
+mean_lat<-ex@ymin+(ex@ymax-ex@ymin)/2
+asp = 1/cospi(mean_lat/180) #Determines aspect ratio from latitude of image
 
 #Load elevation data
 DEM_url<-"https://github.com/cverdel/rayshader_experiment/raw/main/Hermannsburg_DEM.tif"
